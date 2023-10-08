@@ -34,4 +34,14 @@ public class RedisMqConsumer {
     public void testTopic3(Message<?> message) {
         log.info("topic3===> " + message);
     }
+
+    @MessageListener(channel = "pubsub", mode = MessageListener.Mode.PUBSUB)
+    public void testPubsub1(Message<?> message) {
+        log.info("pubsub1===> " + message);
+    }
+
+    @MessageListener(channel = "pubsub", mode = MessageListener.Mode.PUBSUB)
+    public void testPubsub2(Message<?> message) {
+        log.info("pubsub2===> " + message);
+    }
 }

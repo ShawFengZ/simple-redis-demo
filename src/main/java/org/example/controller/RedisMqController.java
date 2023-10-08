@@ -18,4 +18,9 @@ public class RedisMqController {
     public long createMessageWithTopic(@PathVariable String key, @RequestBody Message<String> message) {
         return redisTemplate.opsForList().leftPush(key, JSONUtil.toJsonStr(message));
     }
+
+    @PostMapping("/pubsub/{key}")
+    public void createMessageWithPubsub(@PathVariable String key, @RequestBody Message<String> message) {
+        redisTemplate.convertAndSend(key, JSONUtil.toJsonStr(message));
+    }
 }

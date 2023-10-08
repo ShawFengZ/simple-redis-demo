@@ -11,6 +11,8 @@ public @interface MessageListener {
 
     String topic() default "";
 
+    String channel() default "";
+
     Mode mode() default Mode.TOPIC;
 
     enum Mode {

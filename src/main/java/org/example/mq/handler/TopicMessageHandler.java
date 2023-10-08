@@ -33,11 +33,8 @@ public class TopicMessageHandler extends AbstractMessageHandler {
         while (true) {
             List<byte[]> bytes = connection.bRPop(1, topic.getBytes());
             if (CollectionUtil.isNotEmpty(bytes)) {
-                log.info("bytes length {}", bytes.size());
                 if (bytes.get(1) != null) {
                     consumer(method, consumers, bean, bytes.get(1));
-                } else {
-                    log.error("bytes don't have 1");
                 }
             }
         }
